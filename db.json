@@ -1,0 +1,22 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Physics Notes",
+      "content": "Newton Sir is exhaustive",
+      "date": "02-08-2020"
+    },
+    {
+      "id": 2,
+      "title": "Maths Notes",
+      "content": "Aryabhatta Sir is exhaustive",
+      "date": "02-08-2020"
+    },
+    {
+      "id": 3,
+      "title": "Chemistry Notes",
+      "content": "Hesinberg is god",
+      "date": "02-08-2020"
+    }
+  ]
+}
