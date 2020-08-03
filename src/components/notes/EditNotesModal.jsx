@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-import { addNote } from '../../actions/noteActions';
+import { updateNote, clearCurrent } from '../../actions/noteActions';
 
-const EditNotesModal = ({ addNote }) => {
+const EditNotesModal = ({ updateNote, current, clearCurrent }) => {
   const [note, setNote] = useState({
     title: '',
     content: '',
   });
+
+  useEffect(
+    () => {
+      if (current) {
+        setNote({ title: current.title, content: current.content });
+      }
+    },
+    // eslint-next-line-disable
+    [current]
+  );
 
   const { title, content } = note;
 
@@ -20,14 +30,16 @@ const EditNotesModal = ({ addNote }) => {
       M.toast({ html: 'Please Enter title and content' });
     } else {
       const newNote = {
+        id: current.id,
         title,
         content,
         date: new Date(),
       };
 
-      addNote(newNote);
+      updateNote(newNote);
 
-      M.toast({ html: 'New Note Added' });
+      M.toast({ html: 'Note Updated' });
+      clearCurrent();
     }
   };
 
@@ -62,7 +74,7 @@ const EditNotesModal = ({ addNote }) => {
           style={styles.btnStyle}
           onClick={onSubmit}
         >
-          Add
+          Update
         </a>
       </div>
     </div>
@@ -70,8 +82,13 @@ const EditNotesModal = ({ addNote }) => {
 };
 
 EditNotesModal.propTypes = {
-  addNote: PropTypes.func.isRequired,
+  clearCurrent: PropTypes.func.isRequired,
+  updateNote: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  current: state.note.current,
+});
 
 const styles = {
   modalStyle: {
@@ -83,4 +100,6 @@ const styles = {
   },
 };
 
-export default connect(null, { addNote })(EditNotesModal);
+export default connect(mapStateToProps, { updateNote, clearCurrent })(
+  EditNotesModal
+);

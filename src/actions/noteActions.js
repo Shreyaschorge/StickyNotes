@@ -4,6 +4,10 @@ import {
   SET_LOADING,
   SEARCH_NOTES,
   ADD_NOTE,
+  SET_CURRENT,
+  CLEAR_CURRENT,
+  DELETE_NOTE,
+  UPDATE_NOTE,
 } from './types';
 
 // Get all notes
@@ -28,7 +32,6 @@ export const getNotes = () => async (dispatch) => {
 export const addNote = (note) => async (dispatch) => {
   try {
     setLoading();
-    console.log('addNote');
 
     const res = await fetch('http://localhost:5000/notes', {
       method: 'POST',
@@ -42,6 +45,54 @@ export const addNote = (note) => async (dispatch) => {
     dispatch({
       type: ADD_NOTE,
       payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: NOTES_ERRORS,
+      payload: err.response.statusText,
+    });
+  }
+};
+
+// Update note
+export const updateNote = (note) => async (dispatch) => {
+  try {
+    setLoading();
+
+    const res = await fetch(`http://localhost:5000/notes/${note.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(note),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await res.json();
+
+    dispatch({
+      type: UPDATE_NOTE,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: NOTES_ERRORS,
+      payload: err.response.statusText,
+    });
+  }
+};
+
+// delete note
+export const deleteNote = (id) => async (dispatch) => {
+  try {
+    setLoading();
+
+    await fetch(`http://localhost:5000/notes/${id}`, {
+      method: 'DELETE',
+    });
+
+    dispatch({
+      type: DELETE_NOTE,
+      payload: id,
     });
   } catch (err) {
     dispatch({
@@ -69,6 +120,21 @@ export const searchNotes = (text) => async (dispatch) => {
       payload: err.response.statusText,
     });
   }
+};
+
+// Set current note
+export const setCurrent = (note) => {
+  return {
+    type: SET_CURRENT,
+    payload: note,
+  };
+};
+
+// Clear current note
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT,
+  };
 };
 
 // set Loading

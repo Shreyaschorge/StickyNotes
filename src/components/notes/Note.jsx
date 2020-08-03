@@ -1,27 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
-const Note = () => {
+import { deleteNote, clearCurrent } from '../../actions/noteActions';
+
+import Background from '../layout/Background';
+
+const Note = ({ note: { current }, deleteNote, clearCurrent }) => {
+  const onDelete = () => {
+    deleteNote(current.id);
+    M.toast({ html: 'Note Deleted' });
+    clearCurrent();
+  };
+
+  if (current === null) {
+    return <Background />;
+  }
+
   return (
     <div style={{ padding: '75px 35px 30px 0px' }}>
       <div className='card'>
         <div className='card-content'>
-          <span className='card-title'> Card Title</span>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-            voluptas nemo dolor veritatis ipsam. Unde, perspiciatis vel?
-            Obcaecati fuga minus laboriosam. Fuga labore, animi hic deleniti
-            aliquid minima exercitationem porro quidem consectetur eius
-            accusamus veritatis temporibus a quis culpa ipsam laboriosam,
-            suscipit, officiis ipsa nulla sunt! Mollitia atque laboriosam veniam
-            fugiat quas! Minima deleniti perspicia accusantium odio, voluptate
-            corporis sapiente quae optio dolorem dicta aut corrupti quibusdam
-            nostrum laborum facilis tenetur aliquid et dolores rem facere.
-            Reprehenderit officiis assumenda odit accusantium repellat, libero
-            aliquid maxime adipisci provident. Ad, placeat suscipit voluptatum
-            vel numquam, quia nihil cum provident cumque magnam dolores
-            laboriosam vitae eligendi ex tempore! Laborum, eos odio! Quod nam, a
-            autem blanditiis nulla dolore dicta laborum eius sed provident
-          </p>
+          <span className='card-title'> {current.title}</span>
+          <p>{current.content}</p>
         </div>
         <a
           href='#edit-note-modal'
@@ -33,6 +35,7 @@ const Note = () => {
         <a
           href='#!'
           className='btn-floating halfway-fab waves-effect waves-light red'
+          onClick={onDelete}
         >
           <i className='material-icons'>delete</i>
         </a>
@@ -41,4 +44,14 @@ const Note = () => {
   );
 };
 
-export default Note;
+Note.propTypes = {
+  note: PropTypes.object.isRequired,
+  deleteNote: PropTypes.func.isRequired,
+  clearCurrent: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  note: state.note,
+});
+
+export default connect(mapStateToProps, { deleteNote, clearCurrent })(Note);

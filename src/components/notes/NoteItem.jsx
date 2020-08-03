@@ -1,11 +1,15 @@
 import React from 'react';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const NoteItem = ({ note }) => {
-  const { id, title, content, date } = note;
+import { setCurrent } from '../../actions/noteActions';
+
+const NoteItem = ({ note, setCurrent }) => {
+  const { title, content, date } = note;
 
   return (
-    <a href='#!' className='clearfix'>
+    <a href='#!' className='clearfix' onClick={() => setCurrent(note)}>
       <div className='card'>
         <div className='card-content'>
           <strong style={{ color: 'black' }}>{title}</strong>
@@ -22,4 +26,8 @@ const NoteItem = ({ note }) => {
   );
 };
 
-export default NoteItem;
+NoteItem.propTypes = {
+  setCurrent: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setCurrent })(NoteItem);
