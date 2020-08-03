@@ -8,6 +8,7 @@ import NoteList from './components/notes/NoteList';
 import Note from './components/notes/Note';
 import AddNotesModal from './components/notes/AddNotesModal';
 import EditNotesModal from './components/notes/EditNotesModal';
+import AddNoteBtn from './components/layout/AddNoteBtn';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -23,23 +24,14 @@ const App = () => {
       <div className='row'>
         <div className='col s3' style={{ paddingLeft: '0px' }}>
           <NavBar />
-          <div style={{ padding: '10px' }} className='overflow-auto'>
-            <NoteList />
-          </div>
+          <NoteList />
         </div>
         <div className='col s9'>
           <Note />
         </div>
-        <div className='fixed-action-btn'>
-          <a
-            href='#add-note-modal'
-            className='btn-floating btn-large waves-effect waves-light teal accent-4 modal-trigger'
-          >
-            <i className='material-icons'>add</i>
-          </a>
-          <AddNotesModal />
-          <EditNotesModal />
-        </div>
+        <AddNoteBtn />
+        <AddNotesModal />
+        <EditNotesModal />
       </div>
     </Provider>
   );

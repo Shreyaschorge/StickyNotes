@@ -18,13 +18,13 @@ const NoteList = ({ note: { notes, loading }, getNotes }) => {
   }
 
   return (
-    <Fragment>
+    <div style={{ padding: '10px' }} className='overflow-auto'>
       {!loading && notes.length === 0 ? (
         <h4>No Notes to Show</h4>
       ) : (
         notes.map((note) => <NoteItem note={note} key={note.id} />)
       )}
-    </Fragment>
+    </div>
   );
 };
 
