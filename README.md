@@ -27,3 +27,5 @@ Builds the app for production to the build folder.
 <img src="src/image/stickynotes.JPG">
 
 <img src="src/image/stickynotes2.JPG">
+
+<img src="src/image/stickynotes3.JPG">
