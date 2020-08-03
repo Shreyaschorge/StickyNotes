@@ -23,7 +23,7 @@ export const getNotes = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: NOTES_ERRORS,
-      payload: err.response.statusText,
+      payload: err.response,
     });
   }
 };
@@ -52,7 +52,7 @@ export const addNote = (note) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: NOTES_ERRORS,
-      payload: err.response.statusText,
+      payload: err.response,
     });
   }
 };
@@ -102,7 +102,7 @@ export const deleteNote = (id) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: NOTES_ERRORS,
-      payload: err.response.statusText,
+      payload: err.response,
     });
   }
 };
@@ -124,7 +124,7 @@ export const searchNotes = (text) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: NOTES_ERRORS,
-      payload: err.response.statusText,
+      payload: err.response,
     });
   }
 };
