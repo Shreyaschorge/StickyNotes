@@ -22,4 +22,8 @@ Open http://localhost:3000 Server http://localhost:5000 db.json contains data
 
 Builds the app for production to the build folder.
 
-<img src="src/image/notes.svg">
+## UI
+
+<img src="src/image/stickynotes.JPG">
+
+<img src="src/image/stickynotes2.JPG">
