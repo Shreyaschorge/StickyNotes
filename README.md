@@ -21,3 +21,5 @@ Open http://localhost:3000 Server http://localhost:5000 db.json contains data
 ### `npm run build`
 
 Builds the app for production to the build folder.
+
+<img src="src/image/notes.svg">
