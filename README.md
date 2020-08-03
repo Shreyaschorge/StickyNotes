@@ -1,6 +1,6 @@
 ## Sticky Notes
 
-React app to take Sticky Notes. Uses JSON-Server as a mock backend.
+React app to take Sticky Notes. Uses JSON-Server as a mock backend hosted on heroku (https://radiant-stream-39786.herokuapp.com/notes).
 
 To Initialize the Project Follow the following commands
 
@@ -9,14 +9,6 @@ In the project directory, you can run:
 ### `npm install`
 
 ### `npm start`
-
-It uses concurrently library to kickStart json-server and React
-
-json-server running on port 5000
-ReactJs running on port 3000
-
-Runs the app with the backend JSON-Server
-Open http://localhost:3000 Server http://localhost:5000 db.json contains data
 
 ## UI
 
