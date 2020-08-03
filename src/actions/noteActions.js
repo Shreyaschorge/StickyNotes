@@ -14,7 +14,7 @@ import {
 export const getNotes = () => async (dispatch) => {
   try {
     setLoading();
-    const res = await fetch('https://radiant-stream-39786.herokuapp.com/notes');
+    const res = await fetch('http://localhost:5000/notes');
     const data = await res.json();
     dispatch({
       type: GET_NOTES,
@@ -33,16 +33,13 @@ export const addNote = (note) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await fetch(
-      'https://radiant-stream-39786.herokuapp.com/notes',
-      {
-        method: 'POST',
-        body: JSON.stringify(note),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const res = await fetch('http://localhost:5000/notes', {
+      method: 'POST',
+      body: JSON.stringify(note),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     const data = await res.json();
 
     dispatch({
@@ -61,16 +58,13 @@ export const addNote = (note) => async (dispatch) => {
 export const updateNote = (note) => async (dispatch) => {
   try {
     setLoading();
-    const res = await fetch(
-      `https://radiant-stream-39786.herokuapp.com/notes/${note.id}`,
-      {
-        method: 'PUT',
-        body: JSON.stringify(note),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const res = await fetch(`http://localhost:5000/notes/${note.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(note),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     const data = await res.json();
 
@@ -91,7 +85,7 @@ export const deleteNote = (id) => async (dispatch) => {
   try {
     setLoading();
 
-    await fetch(`https://radiant-stream-39786.herokuapp.com/notes/${id}`, {
+    await fetch(`http://localhost:5000/notes/${id}`, {
       method: 'DELETE',
     });
 
@@ -112,9 +106,7 @@ export const searchNotes = (text) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await fetch(
-      `https://radiant-stream-39786.herokuapp.com/notes?q=${text}`
-    );
+    const res = await fetch(`http://localhost:5000/notes?q=${text}`);
     const data = await res.json();
 
     dispatch({
