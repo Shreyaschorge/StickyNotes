@@ -40,6 +40,10 @@ const EditNotesModal = ({ updateNote, current, clearCurrent }) => {
 
       M.toast({ html: 'Note Updated' });
       clearCurrent();
+      setNote({
+        title: '',
+        content: '',
+      });
     }
   };
 

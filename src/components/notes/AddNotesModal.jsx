@@ -29,6 +29,10 @@ const AddNotesModal = ({ addNote }) => {
 
       M.toast({ html: 'New Note Added' });
     }
+    setNote({
+      title: '',
+      content: '',
+    });
   };
 
   return (

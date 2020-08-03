@@ -18,14 +18,13 @@ const NavBar = ({ searchNotes }) => {
             <input
               id='search'
               type='search'
-              placeholder='Search Logs..'
+              placeholder='Search Notes..'
               ref={text}
               onChange={onChange}
             />
             <label className='label-icon' htmlFor='search'>
               <i className='material-icons'>search</i>
             </label>
-            <i className='material-icons'>close</i>
           </div>
         </form>
       </div>
