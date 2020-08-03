@@ -14,12 +14,21 @@ const Note = ({ note: { current }, deleteNote, clearCurrent }) => {
     clearCurrent();
   };
 
+  const back = () => {
+    clearCurrent();
+  };
+
   if (current === null) {
     return <Background />;
   }
 
   return (
-    <div style={{ padding: '75px 35px 30px 0px' }}>
+    <div style={{ padding: '19px 35px 30px 0px' }}>
+      <a href='#!' onClick={back}>
+        <i className='material-icons' style={{ fontSize: '50px' }}>
+          chevron_left
+        </i>
+      </a>
       <div className='card'>
         <div className='card-content'>
           <span className='card-title'> {current.title}</span>
