@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `npm install`
 
-### `npm run dev`
+### `npm start`
 
 It uses concurrently library to kickStart json-server and React
 
