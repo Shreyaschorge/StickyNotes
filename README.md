@@ -1,6 +1,6 @@
 ## Sticky Notes
 
-React app to take Sticky Notes. Uses JSON-Server as a mock backend hosted on heroku (https://radiant-stream-39786.herokuapp.com/notes).
+React app to take Notes. Uses JSON-Server as a mock backend hosted on heroku (https://radiant-stream-39786.herokuapp.com/notes).
 
 For standalone version you check origin/standalone branch.
 
