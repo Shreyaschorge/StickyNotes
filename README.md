@@ -2,6 +2,8 @@
 
 React app to take Notes. Uses JSON-Server as a mock backend hosted on heroku (https://radiant-stream-39786.herokuapp.com/notes).
 
+Working prototype: https://stickynotes09.netlify.app/
+
 For standalone version you check origin/standalone branch.
 
 To Initialize the Project Follow the following commands
