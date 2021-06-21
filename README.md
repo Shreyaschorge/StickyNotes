@@ -10,9 +10,9 @@ To Initialize the Project Follow the following commands
 
 In the project directory, you can run:
 
-#### `npm install`
+##### `npm install`
 
-#### `npm start`
+##### `npm start`
 
 ## UI
 
